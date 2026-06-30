@@ -1,0 +1,172 @@
+<div class="container py-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h1 class="mb-0">Mi Perfil</h1>
+          <span class="badge bg-light text-dark mt-1" *ngIf="usuarioActual()">
+            Rol: {{ usuarioActual()?.rol | uppercase }}
+          </span>
+        </div>
+        
+        <div class="card-body">
+          <div *ngIf="mensaje()" class="mb-3">
+            <div class="alert" 
+                 [class.alert-success]="mensajeTipo() === 'success'" 
+                 [class.alert-danger]="mensajeTipo() === 'error'"
+                 role="alert">
+              {{ mensaje() }}
+            </div>
+          </div>
+          
+          <div *ngIf="usuarioActual()">
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <h3 class="border-bottom pb-2">Bienvenido: {{ usuarioActual()?.nombres }} {{ usuarioActual()?.apellidoPaterno }}</h3>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Usuario</label>
+                  <p class="form-control bg-light">{{ usuarioActual()?.usuario }}</p>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Nombres</label>
+                  <p class="form-control bg-light">{{ usuarioActual()?.nombres }}</p>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Apellido Paterno</label>
+                  <p class="form-control bg-light">{{ usuarioActual()?.apellidoPaterno }}</p>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Apellido Materno</label>
+                  <p class="form-control bg-light">{{ usuarioActual()?.apellidoMaterno || 'No especificado' }}</p>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Rol</label>
+                  <p class="form-control bg-light">{{ usuarioActual()?.rol | uppercase }}</p>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Fecha de Nacimiento</label>
+                  <p class="form-control bg-light">{{ usuarioActual()?.fechaNacimiento }}</p>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Edad</label>
+                  <p class="form-control bg-light">{{ usuarioActual()?.edad }} años</p>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Ciudad</label>
+                  <p class="form-control bg-light">{{ usuarioActual()?.ciudad }}</p>
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label fw-bold">Dirección</label>
+                  <p class="form-control bg-light">{{ usuarioActual()?.direccion }}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <div class="d-flex gap-2 flex-wrap">
+                  <button class="btn btn-danger px-4 py-2" (click)="cerrarSesion()">
+                    Cerrar Sesión
+                  </button>
+                  <button class="btn btn-warning px-4 py-2" (click)="toggleFormularioCambio()">
+                    Modificar Contraseña
+                  </button>
+                  <button class="btn btn-info px-4 py-2" routerLink="/perfil/gestionar-usuarios" *ngIf="esAdmin()">
+                    Gestionar Usuarios
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="mostrarFormularioCambio()" class="row mt-4">
+              <div class="col-12">
+                <div class="card border-warning">
+                  <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">Cambiar Contraseña</h4>
+                  </div>
+                  <div class="card-body">
+                    <form #cambioForm="ngForm" (ngSubmit)="modificarPassword()">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="mb-3">
+                            <label for="antigua_clave" class="form-label fw-bold">Antigua Contraseña</label>
+                            <input type="password" 
+                                   id="antigua_clave" 
+                                   class="form-control" 
+                                   placeholder="Ingresa tu contraseña actual"
+                                   [(ngModel)]="antiguaClave" 
+                                   name="antiguaClave" 
+                                   required>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="mb-3">
+                            <label for="nueva_clave" class="form-label fw-bold">Nueva Contraseña</label>
+                            <input type="password" 
+                                   id="nueva_clave" 
+                                   class="form-control" 
+                                   placeholder="Ingresa tu nueva contraseña"
+                                   [(ngModel)]="nuevaClave" 
+                                   name="nuevaClave" 
+                                   required>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <div class="mb-3">
+                            <label for="confirmar_clave" class="form-label fw-bold">Confirmar Nueva Contraseña</label>
+                            <input type="password" 
+                                   id="confirmar_clave" 
+                                   class="form-control" 
+                                   placeholder="Confirma tu nueva contraseña"
+                                   [(ngModel)]="confirmarClave" 
+                                   name="confirmarClave" 
+                                   required>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="d-flex gap-2">
+                        <button type="submit" 
+                                class="btn btn-success px-4 py-2" 
+                                [disabled]="!cambioForm.valid">
+                          Guardar Cambios
+                        </button>
+                        <button type="button" 
+                                class="btn btn-secondary px-4 py-2" 
+                                (click)="toggleFormularioCambio()">
+                          Cancelar
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div *ngIf="!usuarioActual()" class="text-center py-4">
+            <p class="text-muted">No hay usuario logueado</p>
+            <a routerLink="/login" class="btn btn-primary">Ir al Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

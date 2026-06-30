@@ -1,0 +1,156 @@
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">Registrar</h2>
+        </div>
+        
+        <div class="card-body">
+          <div *ngIf="mensaje()" class="mb-3">
+            <div class="alert" 
+                 [class.alert-success]="mensajeTipo() === 'success'" 
+                 [class.alert-danger]="mensajeTipo() === 'error'"
+                 role="alert">
+              {{ mensaje() }}
+            </div>
+          </div>
+          
+          <form #registroForm="ngForm" (ngSubmit)="registrar()">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="usuario" class="form-label fw-bold">Usuario</label>
+                  <input type="text" 
+                         id="usuario" 
+                         class="form-control" 
+                         placeholder="Ingresa tu usuario"
+                         [(ngModel)]="usuario" 
+                         name="usuario" 
+                         required>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="clave" class="form-label fw-bold">Contraseña</label>
+                  <input type="password" 
+                         id="clave" 
+                         class="form-control" 
+                         placeholder="Ingresa tu contraseña"
+                         [(ngModel)]="clave" 
+                         name="clave" 
+                         required>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="clave2" class="form-label fw-bold">Confirmar Contraseña</label>
+                  <input type="password" 
+                         id="clave2" 
+                         class="form-control" 
+                         placeholder="Confirma tu contraseña"
+                         [(ngModel)]="clave2" 
+                         name="clave2" 
+                         required>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="nombres" class="form-label fw-bold">Nombres</label>
+                  <input type="text" 
+                         id="nombres" 
+                         class="form-control" 
+                         placeholder="Ingresa tus nombres"
+                         [(ngModel)]="nombres" 
+                         name="nombres" 
+                         required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="apellido_paterno" class="form-label fw-bold">Apellido Paterno</label>
+                  <input type="text" 
+                         id="apellido_paterno" 
+                         class="form-control" 
+                         placeholder="Ingresa tu apellido paterno"
+                         [(ngModel)]="apellidoPaterno" 
+                         name="apellidoPaterno" 
+                         required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="apellido_materno" class="form-label fw-bold">Apellido Materno</label>
+                  <input type="text" 
+                         id="apellido_materno" 
+                         class="form-control" 
+                         placeholder="Ingresa tu apellido materno"
+                         [(ngModel)]="apellidoMaterno" 
+                         name="apellidoMaterno">
+                </div>
+
+                <div class="mb-3">
+                  <label for="fecha_nacimiento" class="form-label fw-bold">Fecha de Nacimiento</label>
+                  <input type="date" 
+                         id="fecha_nacimiento" 
+                         class="form-control" 
+                         [(ngModel)]="fechaNacimiento" 
+                         name="fechaNacimiento" 
+                         (change)="calcularEdad()">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="edad" class="form-label fw-bold">Edad</label>
+                  <input type="text" 
+                         id="edad" 
+                         class="form-control bg-light" 
+                         [value]="edad()" 
+                         readonly>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="ciudad" class="form-label fw-bold">Ciudad</label>
+                  <input type="text" 
+                         id="ciudad" 
+                         class="form-control" 
+                         placeholder="Ingresa tu ciudad"
+                         [(ngModel)]="ciudad" 
+                         name="ciudad" 
+                         required>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="direccion" class="form-label fw-bold">Dirección</label>
+                  <input type="text" 
+                         id="direccion" 
+                         class="form-control" 
+                         placeholder="Ingresa tu dirección"
+                         [(ngModel)]="direccion" 
+                         name="direccion" 
+                         required>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-12">
+                <hr>
+                <div class="d-flex gap-2 justify-content-center">
+                  <button type="submit" 
+                          class="btn btn-primary px-5 py-2" 
+                          [disabled]="!registroForm.valid">
+                    Registrar
+                  </button>
+                  <button type="button" 
+                          class="btn btn-secondary px-5 py-2" 
+                          (click)="limpiarFormulario()">
+                    Limpiar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

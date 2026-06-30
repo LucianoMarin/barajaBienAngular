@@ -1,0 +1,688 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>barajabien documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">barajabien documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  InicioComponent</li>
+</ol>
+
+<div class="io-file io-file-path" data-compodoc="entity-file-path">
+    <span class="icon ion-ios-document" aria-hidden="true"></span>
+    <code>src/app/pages/inicio/inicio.component.ts</code>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-inicio</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./inicio.component.css</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./inicio.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./inicio.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+
+@Component({
+  selector: &#x27;app-inicio&#x27;,
+  standalone: true,
+  imports: [],
+  templateUrl: &#x27;./inicio.component.html&#x27;,
+  styleUrl: &#x27;./inicio.component.css&#x27;,
+})
+export class InicioComponent {}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Hero Section --&gt;
+&lt;section class&#x3D;&quot;hero-section py-5&quot;&gt;
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-lg-6 text-center text-lg-start&quot;&gt;
+                &lt;h1 class&#x3D;&quot;display-1 fw-bold mb-4&quot;&gt;
+                    🎲 BARAJA BIEN
+                &lt;/h1&gt;
+                &lt;p class&#x3D;&quot;lead mb-4&quot;&gt;
+                    Descubre el mundo de la diversión y estrategia. 
+                    Los mejores juegos de mesa para compartir con amigos y familia.
+                &lt;/p&gt;
+                &lt;div class&#x3D;&quot;d-grid gap-3 d-sm-flex justify-content-center justify-content-lg-start&quot;&gt;
+                    &lt;button class&#x3D;&quot;btn btn-primary btn-lg px-5 py-3 rounded-pill&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-cart-plus me-2&quot;&gt;&lt;/i&gt;Explorar Juegos
+                    &lt;/button&gt;
+                    &lt;button class&#x3D;&quot;btn btn-outline-light btn-lg px-5 py-3 rounded-pill&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-play-circle me-2&quot;&gt;&lt;/i&gt;Ver Catálogo
+                    &lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;mt-5 d-flex gap-4 justify-content-center justify-content-lg-start&quot;&gt;
+                    &lt;div&gt;
+                        &lt;h3 class&#x3D;&quot;fw-bold text-white&quot;&gt;200+&lt;/h3&gt;
+                        &lt;p class&#x3D;&quot;text-light-emphasis&quot;&gt;Juegos Disponibles&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;h3 class&#x3D;&quot;fw-bold text-white&quot;&gt;15K+&lt;/h3&gt;
+                        &lt;p class&#x3D;&quot;text-light-emphasis&quot;&gt;Clientes Felices&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;h3 class&#x3D;&quot;fw-bold text-white&quot;&gt;4.9★&lt;/h3&gt;
+                        &lt;p class&#x3D;&quot;text-light-emphasis&quot;&gt;Valoración Media&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-lg-6 text-center mt-5 mt-lg-0&quot;&gt;
+                &lt;div class&#x3D;&quot;position-relative&quot;&gt;
+                    &lt;div class&#x3D;&quot;bg-primary bg-opacity-10 rounded-circle p-5 d-inline-block&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-dice-6-fill display-1 text-primary&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;position-absolute top-0 start-0&quot;&gt;
+                        &lt;span class&#x3D;&quot;badge bg-warning rounded-pill p-3&quot;&gt;🎯&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;position-absolute bottom-0 end-0&quot;&gt;
+                        &lt;span class&#x3D;&quot;badge bg-success rounded-pill p-3&quot;&gt;🏆&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Categorías --&gt;
+&lt;section class&#x3D;&quot;py-5 bg-light&quot;&gt;
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;text-center mb-5&quot;&gt;
+            &lt;span class&#x3D;&quot;category-badge d-inline-block mb-3&quot;&gt;Categorías&lt;/span&gt;
+            &lt;h2 class&#x3D;&quot;display-4 fw-bold&quot;&gt;Encuentra tu juego perfecto&lt;/h2&gt;
+            &lt;p class&#x3D;&quot;text-muted&quot;&gt;Explora nuestras categorías y descubre nuevos mundos&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+            &lt;div class&#x3D;&quot;col-md-3 col-6&quot;&gt;
+                &lt;div class&#x3D;&quot;card game-card text-center border-0 shadow-sm&quot;&gt;
+                    &lt;div class&#x3D;&quot;card-img-top bg-primary bg-gradient p-4&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-chess display-1&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                        &lt;h5 class&#x3D;&quot;card-title fw-bold&quot;&gt;Estrategia&lt;/h5&gt;
+                        &lt;p class&#x3D;&quot;card-text text-muted small&quot;&gt;12 juegos&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-3 col-6&quot;&gt;
+                &lt;div class&#x3D;&quot;card game-card text-center border-0 shadow-sm&quot;&gt;
+                    &lt;div class&#x3D;&quot;card-img-top bg-success bg-gradient p-4&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-dice display-1&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                        &lt;h5 class&#x3D;&quot;card-title fw-bold&quot;&gt;Azar&lt;/h5&gt;
+                        &lt;p class&#x3D;&quot;card-text text-muted small&quot;&gt;8 juegos&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-3 col-6&quot;&gt;
+                &lt;div class&#x3D;&quot;card game-card text-center border-0 shadow-sm&quot;&gt;
+                    &lt;div class&#x3D;&quot;card-img-top bg-info bg-gradient p-4&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-people display-1&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                        &lt;h5 class&#x3D;&quot;card-title fw-bold&quot;&gt;Familiares&lt;/h5&gt;
+                        &lt;p class&#x3D;&quot;card-text text-muted small&quot;&gt;15 juegos&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-3 col-6&quot;&gt;
+                &lt;div class&#x3D;&quot;card game-card text-center border-0 shadow-sm&quot;&gt;
+                    &lt;div class&#x3D;&quot;card-img-top bg-warning bg-gradient p-4&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-puzzle display-1&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                        &lt;h5 class&#x3D;&quot;card-title fw-bold&quot;&gt;Rompecabezas&lt;/h5&gt;
+                        &lt;p class&#x3D;&quot;card-text text-muted small&quot;&gt;10 juegos&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Juegos Destacados --&gt;
+&lt;section class&#x3D;&quot;py-5&quot;&gt;
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;text-center mb-5&quot;&gt;
+            &lt;span class&#x3D;&quot;category-badge d-inline-block mb-3&quot;&gt;Destacados&lt;/span&gt;
+            &lt;h2 class&#x3D;&quot;display-4 fw-bold&quot;&gt;Los más populares&lt;/h2&gt;
+            &lt;p class&#x3D;&quot;text-muted&quot;&gt;Los juegos favoritos de nuestra comunidad&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;div class&#x3D;&quot;card game-card shadow&quot;&gt;
+                    &lt;div class&#x3D;&quot;card-img-top d-flex align-items-center justify-content-center&quot; style&#x3D;&quot;background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);&quot;&gt;
+                        &lt;span style&#x3D;&quot;font-size: 80px;&quot;&gt;♟️&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                        &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-start mb-2&quot;&gt;
+                            &lt;h5 class&#x3D;&quot;card-title fw-bold&quot;&gt;Ajedrez Élite&lt;/h5&gt;
+                            &lt;span class&#x3D;&quot;badge bg-primary&quot;&gt;Estrategia&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;p class&#x3D;&quot;card-text text-muted&quot;&gt;Juego de estrategia clásico con piezas de alta calidad.&lt;/p&gt;
+                        &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                            &lt;span class&#x3D;&quot;fw-bold text-primary&quot;&gt;$29.99&lt;/span&gt;
+                            &lt;button class&#x3D;&quot;btn btn-sm btn-outline-primary rounded-pill&quot;&gt;
+                                &lt;i class&#x3D;&quot;bi bi-cart-plus&quot;&gt;&lt;/i&gt; Añadir
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;div class&#x3D;&quot;card game-card shadow&quot;&gt;
+                    &lt;div class&#x3D;&quot;card-img-top d-flex align-items-center justify-content-center&quot; style&#x3D;&quot;background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);&quot;&gt;
+                        &lt;span style&#x3D;&quot;font-size: 80px;&quot;&gt;🎯&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                        &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-start mb-2&quot;&gt;
+                            &lt;h5 class&#x3D;&quot;card-title fw-bold&quot;&gt;Dardos Pro&lt;/h5&gt;
+                            &lt;span class&#x3D;&quot;badge bg-success&quot;&gt;Habilidad&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;p class&#x3D;&quot;card-text text-muted&quot;&gt;Set profesional de dardos con tablero electrónico.&lt;/p&gt;
+                        &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                            &lt;span class&#x3D;&quot;fw-bold text-primary&quot;&gt;$39.99&lt;/span&gt;
+                            &lt;button class&#x3D;&quot;btn btn-sm btn-outline-primary rounded-pill&quot;&gt;
+                                &lt;i class&#x3D;&quot;bi bi-cart-plus&quot;&gt;&lt;/i&gt; Añadir
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;div class&#x3D;&quot;card game-card shadow&quot;&gt;
+                    &lt;div class&#x3D;&quot;card-img-top d-flex align-items-center justify-content-center&quot; style&#x3D;&quot;background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);&quot;&gt;
+                        &lt;span style&#x3D;&quot;font-size: 80px;&quot;&gt;🎲&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                        &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-start mb-2&quot;&gt;
+                            &lt;h5 class&#x3D;&quot;card-title fw-bold&quot;&gt;Monopoly Deluxe&lt;/h5&gt;
+                            &lt;span class&#x3D;&quot;badge bg-warning text-dark&quot;&gt;Familiar&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;p class&#x3D;&quot;card-text text-muted&quot;&gt;Edición especial del clásico juego de compra y venta.&lt;/p&gt;
+                        &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                            &lt;span class&#x3D;&quot;fw-bold text-primary&quot;&gt;$49.99&lt;/span&gt;
+                            &lt;button class&#x3D;&quot;btn btn-sm btn-outline-primary rounded-pill&quot;&gt;
+                                &lt;i class&#x3D;&quot;bi bi-cart-plus&quot;&gt;&lt;/i&gt; Añadir
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Características --&gt;
+&lt;section class&#x3D;&quot;py-5 bg-light&quot;&gt;
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;div class&#x3D;&quot;text-center p-4&quot;&gt;
+                    &lt;div class&#x3D;&quot;feature-icon mb-3&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-truck&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h5 class&#x3D;&quot;fw-bold&quot;&gt;Envío Gratis&lt;/h5&gt;
+                    &lt;p class&#x3D;&quot;text-muted&quot;&gt;En pedidos superiores a $50&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;div class&#x3D;&quot;text-center p-4&quot;&gt;
+                    &lt;div class&#x3D;&quot;feature-icon mb-3&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-arrow-repeat&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h5 class&#x3D;&quot;fw-bold&quot;&gt;Devolución Fácil&lt;/h5&gt;
+                    &lt;p class&#x3D;&quot;text-muted&quot;&gt;30 días de garantía&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;div class&#x3D;&quot;text-center p-4&quot;&gt;
+                    &lt;div class&#x3D;&quot;feature-icon mb-3&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-shield-check&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h5 class&#x3D;&quot;fw-bold&quot;&gt;Pago Seguro&lt;/h5&gt;
+                    &lt;p class&#x3D;&quot;text-muted&quot;&gt;Transacciones 100% protegidas&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Testimonios --&gt;
+&lt;section class&#x3D;&quot;py-5&quot;&gt;
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;text-center mb-5&quot;&gt;
+            &lt;span class&#x3D;&quot;category-badge d-inline-block mb-3&quot;&gt;Testimonios&lt;/span&gt;
+            &lt;h2 class&#x3D;&quot;display-4 fw-bold&quot;&gt;Lo que dicen nuestros jugadores&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;div class&#x3D;&quot;testimonial-card&quot;&gt;
+                    &lt;div class&#x3D;&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;div class&#x3D;&quot;bg-primary rounded-circle p-3 me-3 text-white&quot;&gt;
+                            &lt;i class&#x3D;&quot;bi bi-person display-6&quot;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;h6 class&#x3D;&quot;fw-bold mb-0&quot;&gt;Carlos M.&lt;/h6&gt;
+                            &lt;small class&#x3D;&quot;text-muted&quot;&gt;★★★★★&lt;/small&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;p class&#x3D;&quot;text-muted mb-0&quot;&gt;&quot;Excelente selección de juegos. La calidad es increíble y los precios son muy competitivos.&quot;&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;div class&#x3D;&quot;testimonial-card&quot;&gt;
+                    &lt;div class&#x3D;&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;div class&#x3D;&quot;bg-success rounded-circle p-3 me-3 text-white&quot;&gt;
+                            &lt;i class&#x3D;&quot;bi bi-person display-6&quot;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;h6 class&#x3D;&quot;fw-bold mb-0&quot;&gt;Ana G.&lt;/h6&gt;
+                            &lt;small class&#x3D;&quot;text-muted&quot;&gt;★★★★★&lt;/small&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;p class&#x3D;&quot;text-muted mb-0&quot;&gt;&quot;Mi familia y yo hemos encontrado juegos maravillosos para nuestras noches de juegos. ¡Muy recomendados!&quot;&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;div class&#x3D;&quot;testimonial-card&quot;&gt;
+                    &lt;div class&#x3D;&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;div class&#x3D;&quot;bg-warning rounded-circle p-3 me-3 text-white&quot;&gt;
+                            &lt;i class&#x3D;&quot;bi bi-person display-6&quot;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;h6 class&#x3D;&quot;fw-bold mb-0&quot;&gt;Pedro R.&lt;/h6&gt;
+                            &lt;small class&#x3D;&quot;text-muted&quot;&gt;★★★★★&lt;/small&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;p class&#x3D;&quot;text-muted mb-0&quot;&gt;&quot;El mejor sitio para comprar juegos de mesa online. Envío rápido y atención al cliente excelente.&quot;&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Newsletter --&gt;
+&lt;section class&#x3D;&quot;py-5 bg-primary text-white&quot;&gt;
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;row justify-content-center text-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-lg-8&quot;&gt;
+                &lt;h3 class&#x3D;&quot;fw-bold mb-3&quot;&gt;¡No te pierdas las novedades!&lt;/h3&gt;
+                &lt;p class&#x3D;&quot;mb-4&quot;&gt;Suscríbete para recibir ofertas exclusivas y nuevos lanzamientos&lt;/p&gt;
+                &lt;div class&#x3D;&quot;input-group input-group-lg mx-auto&quot; style&#x3D;&quot;max-width: 500px;&quot;&gt;
+                    &lt;input type&#x3D;&quot;email&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Tu email&quot; aria-label&#x3D;&quot;Email&quot;&gt;
+                    &lt;button class&#x3D;&quot;btn btn-warning text-dark fw-bold&quot; type&#x3D;&quot;button&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-send me-2&quot;&gt;&lt;/i&gt;Suscribir
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Footer --&gt;
+&lt;footer class&#x3D;&quot;py-4 bg-dark text-white-50&quot;&gt;
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-md-6 text-center text-md-start&quot;&gt;
+                &lt;p class&#x3D;&quot;mb-0&quot;&gt;© 2026 🎲 Baraja Bien. Todos los derechos reservados.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-6 text-center text-md-end&quot;&gt;
+                &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;text-white-50 text-decoration-none me-3&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-facebook&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+                &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;text-white-50 text-decoration-none me-3&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-instagram&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+                &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;text-white-50 text-decoration-none me-3&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-twitter&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+                &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;text-white-50 text-decoration-none&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-youtube&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./inicio.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Hero Section --><section class="hero-section py-5">    <div class="container">        <div class="row align-items-center">            <div class="col-lg-6 text-center text-lg-start">                <h1 class="display-1 fw-bold mb-4">                    🎲 BARAJA BIEN                </h1>                <p class="lead mb-4">                    Descubre el mundo de la diversión y estrategia.                     Los mejores juegos de mesa para compartir con amigos y familia.                </p>                <div class="d-grid gap-3 d-sm-flex justify-content-center justify-content-lg-start">                    <button class="btn btn-primary btn-lg px-5 py-3 rounded-pill">                        <i class="bi bi-cart-plus me-2"></i>Explorar Juegos                    </button>                    <button class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">                        <i class="bi bi-play-circle me-2"></i>Ver Catálogo                    </button>                </div>                <div class="mt-5 d-flex gap-4 justify-content-center justify-content-lg-start">                    <div>                        <h3 class="fw-bold text-white">200+</h3>                        <p class="text-light-emphasis">Juegos Disponibles</p>                    </div>                    <div>                        <h3 class="fw-bold text-white">15K+</h3>                        <p class="text-light-emphasis">Clientes Felices</p>                    </div>                    <div>                        <h3 class="fw-bold text-white">4.9★</h3>                        <p class="text-light-emphasis">Valoración Media</p>                    </div>                </div>            </div>            <div class="col-lg-6 text-center mt-5 mt-lg-0">                <div class="position-relative">                    <div class="bg-primary bg-opacity-10 rounded-circle p-5 d-inline-block">                        <i class="bi bi-dice-6-fill display-1 text-primary"></i>                    </div>                    <div class="position-absolute top-0 start-0">                        <span class="badge bg-warning rounded-pill p-3">🎯</span>                    </div>                    <div class="position-absolute bottom-0 end-0">                        <span class="badge bg-success rounded-pill p-3">🏆</span>                    </div>                </div>            </div>        </div>    </div></section><!-- Categorías --><section class="py-5 bg-light">    <div class="container">        <div class="text-center mb-5">            <span class="category-badge d-inline-block mb-3">Categorías</span>            <h2 class="display-4 fw-bold">Encuentra tu juego perfecto</h2>            <p class="text-muted">Explora nuestras categorías y descubre nuevos mundos</p>        </div>        <div class="row g-4">            <div class="col-md-3 col-6">                <div class="card game-card text-center border-0 shadow-sm">                    <div class="card-img-top bg-primary bg-gradient p-4">                        <i class="bi bi-chess display-1"></i>                    </div>                    <div class="card-body">                        <h5 class="card-title fw-bold">Estrategia</h5>                        <p class="card-text text-muted small">12 juegos</p>                    </div>                </div>            </div>            <div class="col-md-3 col-6">                <div class="card game-card text-center border-0 shadow-sm">                    <div class="card-img-top bg-success bg-gradient p-4">                        <i class="bi bi-dice display-1"></i>                    </div>                    <div class="card-body">                        <h5 class="card-title fw-bold">Azar</h5>                        <p class="card-text text-muted small">8 juegos</p>                    </div>                </div>            </div>            <div class="col-md-3 col-6">                <div class="card game-card text-center border-0 shadow-sm">                    <div class="card-img-top bg-info bg-gradient p-4">                        <i class="bi bi-people display-1"></i>                    </div>                    <div class="card-body">                        <h5 class="card-title fw-bold">Familiares</h5>                        <p class="card-text text-muted small">15 juegos</p>                    </div>                </div>            </div>            <div class="col-md-3 col-6">                <div class="card game-card text-center border-0 shadow-sm">                    <div class="card-img-top bg-warning bg-gradient p-4">                        <i class="bi bi-puzzle display-1"></i>                    </div>                    <div class="card-body">                        <h5 class="card-title fw-bold">Rompecabezas</h5>                        <p class="card-text text-muted small">10 juegos</p>                    </div>                </div>            </div>        </div>    </div></section><!-- Juegos Destacados --><section class="py-5">    <div class="container">        <div class="text-center mb-5">            <span class="category-badge d-inline-block mb-3">Destacados</span>            <h2 class="display-4 fw-bold">Los más populares</h2>            <p class="text-muted">Los juegos favoritos de nuestra comunidad</p>        </div>        <div class="row g-4">            <div class="col-md-4">                <div class="card game-card shadow">                    <div class="card-img-top d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">                        <span style="font-size: 80px;">♟️</span>                    </div>                    <div class="card-body">                        <div class="d-flex justify-content-between align-items-start mb-2">                            <h5 class="card-title fw-bold">Ajedrez Élite</h5>                            <span class="badge bg-primary">Estrategia</span>                        </div>                        <p class="card-text text-muted">Juego de estrategia clásico con piezas de alta calidad.</p>                        <div class="d-flex justify-content-between align-items-center">                            <span class="fw-bold text-primary">$29.99</span>                            <button class="btn btn-sm btn-outline-primary rounded-pill">                                <i class="bi bi-cart-plus"></i> Añadir                            </button>                        </div>                    </div>                </div>            </div>            <div class="col-md-4">                <div class="card game-card shadow">                    <div class="card-img-top d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">                        <span style="font-size: 80px;">🎯</span>                    </div>                    <div class="card-body">                        <div class="d-flex justify-content-between align-items-start mb-2">                            <h5 class="card-title fw-bold">Dardos Pro</h5>                            <span class="badge bg-success">Habilidad</span>                        </div>                        <p class="card-text text-muted">Set profesional de dardos con tablero electrónico.</p>                        <div class="d-flex justify-content-between align-items-center">                            <span class="fw-bold text-primary">$39.99</span>                            <button class="btn btn-sm btn-outline-primary rounded-pill">                                <i class="bi bi-cart-plus"></i> Añadir                            </button>                        </div>                    </div>                </div>            </div>            <div class="col-md-4">                <div class="card game-card shadow">                    <div class="card-img-top d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">                        <span style="font-size: 80px;">🎲</span>                    </div>                    <div class="card-body">                        <div class="d-flex justify-content-between align-items-start mb-2">                            <h5 class="card-title fw-bold">Monopoly Deluxe</h5>                            <span class="badge bg-warning text-dark">Familiar</span>                        </div>                        <p class="card-text text-muted">Edición especial del clásico juego de compra y venta.</p>                        <div class="d-flex justify-content-between align-items-center">                            <span class="fw-bold text-primary">$49.99</span>                            <button class="btn btn-sm btn-outline-primary rounded-pill">                                <i class="bi bi-cart-plus"></i> Añadir                            </button>                        </div>                    </div>                </div>            </div>        </div>    </div></section><!-- Características --><section class="py-5 bg-light">    <div class="container">        <div class="row g-4">            <div class="col-md-4">                <div class="text-center p-4">                    <div class="feature-icon mb-3">                        <i class="bi bi-truck"></i>                    </div>                    <h5 class="fw-bold">Envío Gratis</h5>                    <p class="text-muted">En pedidos superiores a $50</p>                </div>            </div>            <div class="col-md-4">                <div class="text-center p-4">                    <div class="feature-icon mb-3">                        <i class="bi bi-arrow-repeat"></i>                    </div>                    <h5 class="fw-bold">Devolución Fácil</h5>                    <p class="text-muted">30 días de garantía</p>                </div>            </div>            <div class="col-md-4">                <div class="text-center p-4">                    <div class="feature-icon mb-3">                        <i class="bi bi-shield-check"></i>                    </div>                    <h5 class="fw-bold">Pago Seguro</h5>                    <p class="text-muted">Transacciones 100% protegidas</p>                </div>            </div>        </div>    </div></section><!-- Testimonios --><section class="py-5">    <div class="container">        <div class="text-center mb-5">            <span class="category-badge d-inline-block mb-3">Testimonios</span>            <h2 class="display-4 fw-bold">Lo que dicen nuestros jugadores</h2>        </div>        <div class="row g-4">            <div class="col-md-4">                <div class="testimonial-card">                    <div class="d-flex align-items-center mb-3">                        <div class="bg-primary rounded-circle p-3 me-3 text-white">                            <i class="bi bi-person display-6"></i>                        </div>                        <div>                            <h6 class="fw-bold mb-0">Carlos M.</h6>                            <small class="text-muted">★★★★★</small>                        </div>                    </div>                    <p class="text-muted mb-0">"Excelente selección de juegos. La calidad es increíble y los precios son muy competitivos."</p>                </div>            </div>            <div class="col-md-4">                <div class="testimonial-card">                    <div class="d-flex align-items-center mb-3">                        <div class="bg-success rounded-circle p-3 me-3 text-white">                            <i class="bi bi-person display-6"></i>                        </div>                        <div>                            <h6 class="fw-bold mb-0">Ana G.</h6>                            <small class="text-muted">★★★★★</small>                        </div>                    </div>                    <p class="text-muted mb-0">"Mi familia y yo hemos encontrado juegos maravillosos para nuestras noches de juegos. ¡Muy recomendados!"</p>                </div>            </div>            <div class="col-md-4">                <div class="testimonial-card">                    <div class="d-flex align-items-center mb-3">                        <div class="bg-warning rounded-circle p-3 me-3 text-white">                            <i class="bi bi-person display-6"></i>                        </div>                        <div>                            <h6 class="fw-bold mb-0">Pedro R.</h6>                            <small class="text-muted">★★★★★</small>                        </div>                    </div>                    <p class="text-muted mb-0">"El mejor sitio para comprar juegos de mesa online. Envío rápido y atención al cliente excelente."</p>                </div>            </div>        </div>    </div></section><!-- Newsletter --><section class="py-5 bg-primary text-white">    <div class="container">        <div class="row justify-content-center text-center">            <div class="col-lg-8">                <h3 class="fw-bold mb-3">¡No te pierdas las novedades!</h3>                <p class="mb-4">Suscríbete para recibir ofertas exclusivas y nuevos lanzamientos</p>                <div class="input-group input-group-lg mx-auto" style="max-width: 500px;">                    <input type="email" class="form-control" placeholder="Tu email" aria-label="Email">                    <button class="btn btn-warning text-dark fw-bold" type="button">                        <i class="bi bi-send me-2"></i>Suscribir                    </button>                </div>            </div>        </div>    </div></section><!-- Footer --><footer class="py-4 bg-dark text-white-50">    <div class="container">        <div class="row">            <div class="col-md-6 text-center text-md-start">                <p class="mb-0">© 2026 🎲 Baraja Bien. Todos los derechos reservados.</p>            </div>            <div class="col-md-6 text-center text-md-end">                <a href="#" class="text-white-50 text-decoration-none me-3">                    <i class="bi bi-facebook"></i>                </a>                <a href="#" class="text-white-50 text-decoration-none me-3">                    <i class="bi bi-instagram"></i>                </a>                <a href="#" class="text-white-50 text-decoration-none me-3">                    <i class="bi bi-twitter"></i>                </a>                <a href="#" class="text-white-50 text-decoration-none">                    <i class="bi bi-youtube"></i>                </a>            </div>        </div>    </div></footer></div>'
+    var COMPONENTS = [{'name': 'App', 'selector': 'app-root'},{'name': 'CarruselComponent', 'selector': 'app-carrusel'},{'name': 'CrearProductoComponent', 'selector': 'app-crear-producto'},{'name': 'EventoComponent', 'selector': 'app-evento'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'InicioComponent', 'selector': 'app-inicio'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MenuComponent', 'selector': 'app-menu'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoComponent', 'selector': 'app-producto'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'InicioComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'InicioComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<div class="fila3" id="productos">
+  <div class="titulo">
+    <span>Productos Tienda</span>
+    <img src="assets/images/iconos/espadas.png" class="iconos_titulos" alt="" />
+  </div>
+  <div class="contenedor_carrito">
+    <div class="recuadro_carrito" *ngFor="let producto of productos()">
+      <div class="imagen_recuadro_carrito">
+        <img [src]="producto.imagen" [alt]="producto.nombre">
+      </div>
+      <div class="titulo_producto_recuadro_carrito">
+        <span>{{ producto.nombre }}</span>
+      </div>
+      <div class="descripcion_recuadro_carrito">
+        {{ producto.descripcion }}
+      </div>
+      <div class="estado_recuadro_carrito">
+        <span>Disponible</span>
+        <img class="prop_img_carro" src="assets/images/iconos/validar.png">
+      </div>
+      <div class="precio_recuadro_carrito">
+        <span>Precio: ${{ producto.precio }}</span>
+      </div>
+      <div class="boton_recuadro_carrito">
+        <button class="estilo_boton_carro">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>

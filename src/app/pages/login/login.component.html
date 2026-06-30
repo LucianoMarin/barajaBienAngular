@@ -1,0 +1,72 @@
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">Login</h2>
+        </div>
+        
+        <div class="card-body">
+          <div *ngIf="mensaje()" class="mb-3">
+            <div class="alert" 
+                 [class.alert-success]="mensajeTipo() === 'success'" 
+                 [class.alert-danger]="mensajeTipo() === 'error'"
+                 role="alert">
+              {{ mensaje() }}
+            </div>
+          </div>
+          
+          <form #loginForm="ngForm" (ngSubmit)="ingresar()">
+            <div class="mb-3">
+              <label for="usuario" class="form-label fw-bold">Usuario</label>
+              <input type="text" 
+                     id="usuario" 
+                     class="form-control" 
+                     placeholder="Ingresa tu usuario"
+                     [(ngModel)]="usuario" 
+                     name="usuario" 
+                     required>
+            </div>
+
+            <div class="mb-3">
+              <label for="clave" class="form-label fw-bold">Contraseña</label>
+              <input type="password" 
+                     id="clave" 
+                     class="form-control" 
+                     placeholder="Ingresa tu contraseña"
+                     [(ngModel)]="clave" 
+                     name="clave" 
+                     required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="recuperar" class="form-label">
+                Recuperar Contraseña 
+                <a routerLink="/recuperar" class="text-primary fw-bold">
+                  Aqui
+                </a>
+              </label>
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" 
+                      class="btn btn-primary w-100 py-2" 
+                      [disabled]="!loginForm.valid">
+                Entrar
+              </button>
+            </div>
+            
+            <div class="text-center">
+              <p class="mb-0">
+                ¿No tienes cuenta? 
+                <a routerLink="/registro" class="text-primary fw-bold">
+                  Registrate aqui
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

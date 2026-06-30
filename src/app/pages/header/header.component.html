@@ -1,0 +1,42 @@
+<div class="banner">
+    <div id="dibujo">
+        <div id="contenedor_banner">
+            <img src="assets/images/banner/principal.png" id="tam_banner"
+                alt="Banner principal, muestra gatito jugando cartas, llorando, perdiendo" />
+            <div class="letrabanner">
+                BARAJA
+            </div>
+            <span id="letrabanner2">
+                BIEN
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="separador">
+    <nav class="menu">
+        <ul>
+            <li class="opcionPadre"><a routerLink="/" style="color: white; text-decoration: none;" routerLinkActive="active">Inicio</a></li>
+            <li class="opcionPadre"><a routerLink="/producto" style="color: white; text-decoration: none;" routerLinkActive="active">Productos</a>
+                <ul>
+                    <li class="subopciones" style="color: white;">Mitos y Leyendas</li>
+                    <li class="subopciones" style="color: white;">Pokemon</li>
+                    <li class="subopciones" style="color: white;">Magic</li>
+                    <li class="subopciones" style="color: white;">Yugi Oh</li>
+                </ul>
+            </li>
+            <li class="opciones"><a routerLink="/evento" style="color: white; text-decoration: none;" routerLinkActive="active">Eventos</a></li>
+            
+            <li class="opciones" *ngIf="!estaLogueado()"><a routerLink="/registro" style="color: white; text-decoration: none;" routerLinkActive="active">Registrar</a></li>
+            <li class="opciones" *ngIf="!estaLogueado()"><a routerLink="/login" style="color: white; text-decoration: none;" routerLinkActive="active">Login</a></li>
+            
+            <li class="opciones" *ngIf="estaLogueado()"><a routerLink="/perfil" style="color: white; text-decoration: none;" routerLinkActive="active">Mi Perfil</a></li>
+            
+            <li class="opciones" *ngIf="esAdmin()"><a routerLink="/crear-producto" style="color: white; text-decoration: none;" routerLinkActive="active">Crear Producto</a></li>
+            
+            <li class="opciones" *ngIf="esAdmin()"><a routerLink="/perfil/gestionar-usuarios" style="color: white; text-decoration: none;" routerLinkActive="active">Gestionar Usuarios</a></li>
+            
+            <li class="opciones" *ngIf="estaLogueado()"><a (click)="cerrarSesion()" style="color: white; text-decoration: none; cursor:pointer;">Cerrar Sesion</a></li>
+        </ul>
+    </nav>
+</div>

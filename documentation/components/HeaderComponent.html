@@ -1,0 +1,959 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>barajabien documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">barajabien documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HeaderComponent</li>
+</ol>
+
+<div class="io-file io-file-path" data-compodoc="entity-file-path">
+    <span class="icon ion-ios-document" aria-hidden="true"></span>
+    <code>src/app/pages/header/header.component.ts</code>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#api" class="nav-link"
+                role="tab" id="api-tab" data-bs-toggle="tab" data-link="api">API</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-header</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                        <div>        <code><a href="https://angular.dev/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+</div>
+                        <div>        <code><a href="https://angular.dev/api/router/RouterModule" target="_blank" >RouterModule</a></code>
+</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./header.component.css</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./header.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+        <section data-compodoc="block-relationships">
+            <h3>Relationships</h3>
+
+            <div class="row pt-3">
+                <div class="col-sm-6">
+                    <h4>Used by</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                            <code><a href="../components/App.html" target="_self" >App</a></code>
+                                </li>
+                        </ul>
+                </div>
+
+                <div class="col-sm-6">
+                    <h4>Depends on</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                            <code><a href="https://angular.dev/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                </li>
+                                <li>
+                                            <code><a href="https://angular.dev/api/router/RouterModule" target="_blank" >RouterModule</a></code>
+                                </li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+</div>
+
+    <div class="tab-pane fade " id="api">    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-3">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                    <td class="col-md-9">
+                        <ul class="index-list">
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                <a href="#usuarioActual" >usuarioActual</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-3">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                    <td class="col-md-9">
+                        <ul class="index-list">
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#cargarUsuarioActual" >cargarUsuarioActual</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#cerrarSesion" >cerrarSesion</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#esAdmin" >esAdmin</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#estaLogueado" >estaLogueado</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.dev/api/router/Router" target="_blank">Router</a>, cdr: <a href="https://angular.dev/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/pages/header/header.component.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente.</p>
+<p>Inicializa el componente, carga el usuario y configura
+             el efecto para actualizar la vista cuando cambia el usuario.
+1.0.0</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.dev/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio de navegación de Angular</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.dev/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio para detectar cambios en el DOM</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarUsuarioActual"></a>
+                    <span class="name">
+                        <span ><b>cargarUsuarioActual</b></span>
+                        <a href="#cargarUsuarioActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarUsuarioActual()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/pages/header/header.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga el usuario actual desde localStorage.</p>
+<p>Verifica la existencia de window y localStorage para compatibilidad SSR.
+Si existe usuario en localStorage, lo carga; si no, establece null.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">// Llamada automática en el constructor
+this.cargarUsuarioActual();</code></pre></div><p>1.0.0</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrarSesion"></a>
+                    <span class="name">
+                        <span ><b>cerrarSesion</b></span>
+                        <a href="#cerrarSesion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrarSesion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/pages/header/header.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cierra la sesión del usuario actual.</p>
+<ul>
+<li>Elimina el usuario de localStorage</li>
+<li>Establece usuarioActual a null</li>
+<li>Actualiza la vista</li>
+<li>Redirige al login</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">// Llamada desde el template
+&lt;button (click)=&quot;cerrarSesion()&quot;&gt;Cerrar Sesión&lt;/button&gt;</code></pre></div><p>1.0.0</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="esAdmin"></a>
+                    <span class="name">
+                        <span ><b>esAdmin</b></span>
+                        <a href="#esAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>esAdmin()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/pages/header/header.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Verifica si el usuario actual es administrador.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">if (this.esAdmin()) {
+  // Mostrar opciones de administrador
+}</code></pre></div><p>1.0.0</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p><code>true</code> si el usuario es administrador, <code>false</code> en caso contrario</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="estaLogueado"></a>
+                    <span class="name">
+                        <span ><b>estaLogueado</b></span>
+                        <a href="#estaLogueado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>estaLogueado()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="134"
+                                    class="link-to-prism">src/app/pages/header/header.component.ts:134</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Verifica si hay un usuario logueado.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">if (this.estaLogueado()) {
+  // Mostrar opciones de usuario autenticado
+}</code></pre></div><p>1.0.0</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p><code>true</code> si hay usuario logueado, <code>false</code> si no</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioActual"></a>
+                    <span class="name">
+                        <span ><b>usuarioActual</b></span>
+                        <a href="#usuarioActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;Usuario | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/pages/header/header.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Usuario actualmente logueado.</p>
+<p>Signal que contiene el usuario actual o null si no hay sesión.
+null
+1.0.0</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, signal, effect, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { RouterModule, Router } from &#x27;@angular/router&#x27;;
+import { Usuario } from &#x27;../../models/usuario.model&#x27;;
+
+@Component({
+  selector: &#x27;app-header&#x27;,
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: &#x27;./header.component.html&#x27;,
+  styleUrls: [&#x27;./header.component.css&#x27;]
+})
+export class HeaderComponent {
+
+  /**
+   * Usuario actualmente logueado.
+   * 
+   * @description Signal que contiene el usuario actual o null si no hay sesión.
+   * @type {Signal&lt;Usuario | null&gt;}
+   * @default null
+   * @since 1.0.0
+   */
+  usuarioActual &#x3D; signal&lt;Usuario | null&gt;(null);
+
+  /**
+   * Constructor del componente.
+   * 
+   * @param {Router} router - Servicio de navegación de Angular
+   * @param {ChangeDetectorRef} cdr - Servicio para detectar cambios en el DOM
+   * @description Inicializa el componente, carga el usuario y configura
+   *              el efecto para actualizar la vista cuando cambia el usuario.
+   * @since 1.0.0
+   */
+  constructor(private router: Router, private cdr: ChangeDetectorRef) {
+    this.cargarUsuarioActual();
+
+    effect(() &#x3D;&gt; {
+      const usuario &#x3D; this.usuarioActual();
+      this.cdr.detectChanges();
+    });
+  }
+
+  /**
+   * Carga el usuario actual desde localStorage.
+   * 
+   * @description
+   * Verifica la existencia de window y localStorage para compatibilidad SSR.
+   * Si existe usuario en localStorage, lo carga; si no, establece null.
+   * 
+   * @returns {void}
+   * 
+   * @example
+   * &#x60;&#x60;&#x60;
+   * // Llamada automática en el constructor
+   * this.cargarUsuarioActual();
+   * &#x60;&#x60;&#x60;
+   * 
+   * @since 1.0.0
+   */
+  cargarUsuarioActual() {
+    if (typeof window !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; typeof localStorage !&#x3D;&#x3D; &#x27;undefined&#x27;) {
+      const datos &#x3D; localStorage.getItem(&#x27;usuarioActual&#x27;);
+      if (datos) {
+        this.usuarioActual.set(JSON.parse(datos));
+      } else {
+        this.usuarioActual.set(null);
+      }
+    }
+  }
+
+  /**
+   * Verifica si el usuario actual es administrador.
+   * 
+   * @returns {boolean} &#x60;true&#x60; si el usuario es administrador, &#x60;false&#x60; en caso contrario
+   * 
+   * @example
+   * &#x60;&#x60;&#x60;
+   * if (this.esAdmin()) {
+   *   // Mostrar opciones de administrador
+   * }
+   * &#x60;&#x60;&#x60;
+   * 
+   * @since 1.0.0
+   */
+  esAdmin(): boolean {
+    const usuario &#x3D; this.usuarioActual();
+    return usuario !&#x3D;&#x3D; null &amp;&amp; usuario.rol &#x3D;&#x3D;&#x3D; &#x27;admin&#x27;;
+  }
+
+  /**
+   * Verifica si hay un usuario logueado.
+   * 
+   * @returns {boolean} &#x60;true&#x60; si hay usuario logueado, &#x60;false&#x60; si no
+   * 
+   * @example
+   * &#x60;&#x60;&#x60;
+   * if (this.estaLogueado()) {
+   *   // Mostrar opciones de usuario autenticado
+   * }
+   * &#x60;&#x60;&#x60;
+   * 
+   * @since 1.0.0
+   */
+  estaLogueado(): boolean {
+    return this.usuarioActual() !&#x3D;&#x3D; null;
+  }
+
+  /**
+   * Cierra la sesión del usuario actual.
+   * 
+   * @description
+   * - Elimina el usuario de localStorage
+   * - Establece usuarioActual a null
+   * - Actualiza la vista
+   * - Redirige al login
+   * 
+   * @returns {void}
+   * 
+   * @example
+   * &#x60;&#x60;&#x60;
+   * // Llamada desde el template
+   * &lt;button (click)&#x3D;&quot;cerrarSesion()&quot;&gt;Cerrar Sesión&lt;/button&gt;
+   * &#x60;&#x60;&#x60;
+   * 
+   * @since 1.0.0
+   */
+  cerrarSesion() {
+    if (typeof window !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; typeof localStorage !&#x3D;&#x3D; &#x27;undefined&#x27;) {
+      localStorage.removeItem(&#x27;usuarioActual&#x27;);
+      this.usuarioActual.set(null);
+      this.cdr.detectChanges();
+      this.router.navigate([&#x27;/login&#x27;]);
+    }
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;banner&quot;&gt;
+    &lt;div id&#x3D;&quot;dibujo&quot;&gt;
+        &lt;div id&#x3D;&quot;contenedor_banner&quot;&gt;
+            &lt;img src&#x3D;&quot;assets/images/banner/principal.png&quot; id&#x3D;&quot;tam_banner&quot;
+                alt&#x3D;&quot;Banner principal, muestra gatito jugando cartas, llorando, perdiendo&quot; /&gt;
+            &lt;div class&#x3D;&quot;letrabanner&quot;&gt;
+                BARAJA
+            &lt;/div&gt;
+            &lt;span id&#x3D;&quot;letrabanner2&quot;&gt;
+                BIEN
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;separador&quot;&gt;
+    &lt;nav class&#x3D;&quot;menu&quot;&gt;
+        &lt;ul&gt;
+            &lt;li class&#x3D;&quot;opcionPadre&quot;&gt;&lt;a routerLink&#x3D;&quot;/&quot; style&#x3D;&quot;color: white; text-decoration: none;&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+            &lt;li class&#x3D;&quot;opcionPadre&quot;&gt;&lt;a routerLink&#x3D;&quot;/producto&quot; style&#x3D;&quot;color: white; text-decoration: none;&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Productos&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li class&#x3D;&quot;subopciones&quot; style&#x3D;&quot;color: white;&quot;&gt;Mitos y Leyendas&lt;/li&gt;
+                    &lt;li class&#x3D;&quot;subopciones&quot; style&#x3D;&quot;color: white;&quot;&gt;Pokemon&lt;/li&gt;
+                    &lt;li class&#x3D;&quot;subopciones&quot; style&#x3D;&quot;color: white;&quot;&gt;Magic&lt;/li&gt;
+                    &lt;li class&#x3D;&quot;subopciones&quot; style&#x3D;&quot;color: white;&quot;&gt;Yugi Oh&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li class&#x3D;&quot;opciones&quot;&gt;&lt;a routerLink&#x3D;&quot;/evento&quot; style&#x3D;&quot;color: white; text-decoration: none;&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Eventos&lt;/a&gt;&lt;/li&gt;
+            
+            &lt;li class&#x3D;&quot;opciones&quot; *ngIf&#x3D;&quot;!estaLogueado()&quot;&gt;&lt;a routerLink&#x3D;&quot;/registro&quot; style&#x3D;&quot;color: white; text-decoration: none;&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Registrar&lt;/a&gt;&lt;/li&gt;
+            &lt;li class&#x3D;&quot;opciones&quot; *ngIf&#x3D;&quot;!estaLogueado()&quot;&gt;&lt;a routerLink&#x3D;&quot;/login&quot; style&#x3D;&quot;color: white; text-decoration: none;&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+            
+            &lt;li class&#x3D;&quot;opciones&quot; *ngIf&#x3D;&quot;estaLogueado()&quot;&gt;&lt;a routerLink&#x3D;&quot;/perfil&quot; style&#x3D;&quot;color: white; text-decoration: none;&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Mi Perfil&lt;/a&gt;&lt;/li&gt;
+            
+            &lt;li class&#x3D;&quot;opciones&quot; *ngIf&#x3D;&quot;esAdmin()&quot;&gt;&lt;a routerLink&#x3D;&quot;/crear-producto&quot; style&#x3D;&quot;color: white; text-decoration: none;&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Crear Producto&lt;/a&gt;&lt;/li&gt;
+            
+            &lt;li class&#x3D;&quot;opciones&quot; *ngIf&#x3D;&quot;esAdmin()&quot;&gt;&lt;a routerLink&#x3D;&quot;/perfil/gestionar-usuarios&quot; style&#x3D;&quot;color: white; text-decoration: none;&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Gestionar Usuarios&lt;/a&gt;&lt;/li&gt;
+            
+            &lt;li class&#x3D;&quot;opciones&quot; *ngIf&#x3D;&quot;estaLogueado()&quot;&gt;&lt;a (click)&#x3D;&quot;cerrarSesion()&quot; style&#x3D;&quot;color: white; text-decoration: none; cursor:pointer;&quot;&gt;Cerrar Sesion&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./header.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="banner">    <div id="dibujo">        <div id="contenedor_banner">            <img src="assets/images/banner/principal.png" id="tam_banner"                alt="Banner principal, muestra gatito jugando cartas, llorando, perdiendo" />            <div class="letrabanner">                BARAJA            </div>            <span id="letrabanner2">                BIEN            </span>        </div>    </div></div><div class="separador">    <nav class="menu">        <ul>            <li class="opcionPadre"><a routerLink="/" style="color: white; text-decoration: none;" routerLinkActive="active">Inicio</a></li>            <li class="opcionPadre"><a routerLink="/producto" style="color: white; text-decoration: none;" routerLinkActive="active">Productos</a>                <ul>                    <li class="subopciones" style="color: white;">Mitos y Leyendas</li>                    <li class="subopciones" style="color: white;">Pokemon</li>                    <li class="subopciones" style="color: white;">Magic</li>                    <li class="subopciones" style="color: white;">Yugi Oh</li>                </ul>            </li>            <li class="opciones"><a routerLink="/evento" style="color: white; text-decoration: none;" routerLinkActive="active">Eventos</a></li>                        <li class="opciones" *ngIf="!estaLogueado()"><a routerLink="/registro" style="color: white; text-decoration: none;" routerLinkActive="active">Registrar</a></li>            <li class="opciones" *ngIf="!estaLogueado()"><a routerLink="/login" style="color: white; text-decoration: none;" routerLinkActive="active">Login</a></li>                        <li class="opciones" *ngIf="estaLogueado()"><a routerLink="/perfil" style="color: white; text-decoration: none;" routerLinkActive="active">Mi Perfil</a></li>                        <li class="opciones" *ngIf="esAdmin()"><a routerLink="/crear-producto" style="color: white; text-decoration: none;" routerLinkActive="active">Crear Producto</a></li>                        <li class="opciones" *ngIf="esAdmin()"><a routerLink="/perfil/gestionar-usuarios" style="color: white; text-decoration: none;" routerLinkActive="active">Gestionar Usuarios</a></li>                        <li class="opciones" *ngIf="estaLogueado()"><a (click)="cerrarSesion()" style="color: white; text-decoration: none; cursor:pointer;">Cerrar Sesion</a></li>        </ul>    </nav></div></div>'
+    var COMPONENTS = [{'name': 'App', 'selector': 'app-root'},{'name': 'CarruselComponent', 'selector': 'app-carrusel'},{'name': 'CrearProductoComponent', 'selector': 'app-crear-producto'},{'name': 'EventoComponent', 'selector': 'app-evento'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'InicioComponent', 'selector': 'app-inicio'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MenuComponent', 'selector': 'app-menu'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoComponent', 'selector': 'app-producto'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HeaderComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

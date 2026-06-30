@@ -1,0 +1,9 @@
+<div class="app-container">
+    <app-header></app-header>
+    
+    <app-carrusel *ngIf="showMenuAndCarrusel()"></app-carrusel>
+   
+    <main class="main-content">
+        <router-outlet></router-outlet>
+    </main>
+</div>
